@@ -24,12 +24,22 @@ viewEmployee(id: number) {
 
 
 
-editEmployee(arg0: number) {
-throw new Error('Method not implemented.');
+editEmployee(id: number) {
+  this.employeeService.updateEmployee(id, this.selectedEmployee).subscribe(() => {
+    console.log("Employee updated successfully!");
+  }, error => {
+    console.log(error);
+  });
 }
-deleteEmployee(arg0: number) {
-throw new Error('Method not implemented.');
+
+deleteEmployee(id: number) {
+  this.employeeService.deleteEmployee(id).subscribe(() => {
+    console.log("Employee deleted successfully!");
+  }, error => {
+    console.log(error);
+  });
 }
+
   employees: EmployeeDTO[] = [];
 
   constructor(private employeeService: EmployeeService) { }
